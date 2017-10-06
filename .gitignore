@@ -6,7 +6,7 @@
 .terraform/
 
 # TF Variables
-terraform/terraform.tfvars
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
-terraform/.terraform
+Terraform/terraform.tfvars
+Terraform/terraform.tfstate
+Terraform/terraform.tfstate.backup
+Terraform/.terraform
