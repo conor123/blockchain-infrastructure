@@ -6,7 +6,7 @@
 .terraform/
 
 # TF Variables
-Terraform/terraform.tfvars
-Terraform/terraform.tfstate
-Terraform/terraform.tfstate.backup
-Terraform/.terraform
+AWS-VPC-Miner/Terraform/terraform.tfvars
+AWS-VPC-Miner/Terraform/terraform.tfstate
+AWS-VPC-Miner/Terraform/terraform.tfstate.backup
+AWS-VPC-Miner/Terraform/.terraform
