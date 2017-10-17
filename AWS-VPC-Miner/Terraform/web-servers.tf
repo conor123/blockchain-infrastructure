@@ -11,6 +11,12 @@ resource "aws_instance" "web-1" {
     associate_public_ip_address = true
     source_dest_check = false
 
+    tags {
+        Name = "Blockchain Web Server 1"
+    }
+
+    // Please note that you will have to configure your chef server to bootstrap this node
+    // Comment and configure if bootstrap is not required or configured
     provisioner "chef" {
 
         //environment     = "_default"
@@ -41,9 +47,5 @@ resource "aws_instance" "web-1" {
             }
         }
         EOF
-    }
-
-    tags {
-        Name = "Web Server 1"
     }
 }

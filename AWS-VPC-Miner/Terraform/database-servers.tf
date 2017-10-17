@@ -7,6 +7,6 @@ resource "aws_instance" "db-1" {
     subnet_id = "${aws_subnet.eu-west-1a-private.id}"
     source_dest_check = false
     tags {
-        Name = "DB Server 1"
+        Name = "Blockchain DB Server 1"
     }
 }

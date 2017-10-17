@@ -1,7 +1,10 @@
 resource "aws_security_group" "db" {
-  vpc_id = "${aws_vpc.default.id}"
-  name = "vpc_db"
-  description = "Allow database connections"
+  vpc_id = "${aws_vpc.services-vpc.id}"
+  name = "services-vpc_sg_db"
+  description = "Servies VPC - SG Allow database connections"
+  tags {
+    Name = "DB-SG"
+  }
 
   ingress {
     from_port = 22
@@ -38,16 +41,15 @@ resource "aws_security_group" "db" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags {
-    Name = "DB-SG"
-  }
 }
 
 resource "aws_security_group" "web" {
-  vpc_id = "${aws_vpc.default.id}"
-  name = "vpc_web"
-  description = "Allow incoming HTTP"
+  vpc_id = "${aws_vpc.services-vpc.id}"
+  name = "services-vpc_sg_web"
+  description = "Services VPC - Route Table Allow incoming HTTP"
+  tags {
+    Name = "WebServer-SG"
+  }
 
   ingress {
     from_port = 22
@@ -98,16 +100,15 @@ resource "aws_security_group" "web" {
     protocol = "tcp"
     cidr_blocks = ["${var.private_subnet_cidr_block}"]
   }
-
-  tags {
-    Name = "WebServer-SG"
-  }
 }
 
 resource "aws_security_group" "miner" {
-  vpc_id = "${aws_vpc.default.id}"
+  vpc_id = "${aws_vpc.services-vpc.id}"
   name = "vpc_miner"
   description = "Allow miner server connections"
+  tags {
+    Name = "Miner-SG"
+  }
 
   ingress {
     from_port = 22
@@ -126,17 +127,10 @@ resource "aws_security_group" "miner" {
   // we will need to open the specific ports for your blockchain app here
   // Etherium: 30303
 
-
   egress {
     from_port = 443
     to_port = 443
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags {
-    Name = "DB-SG"
-  }
 }
-
-
